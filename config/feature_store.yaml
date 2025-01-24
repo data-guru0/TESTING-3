@@ -1,0 +1,30 @@
+project: "titanic_project"
+
+# Online store (Redis) configuration
+online_store:
+  type: redis
+  redis:
+    host: "localhost"
+    port: 6379
+
+# Offline store configuration (You can use a simple file-based store for simplicity)
+offline_store:
+  type: file
+  path: "data/feast_offline_store"
+
+# Entities
+entities:
+  - name: passenger_id
+    value_type: int64
+    description: "Unique identifier for each passenger"
+
+# Feature definitions
+features:
+  - name: embarked_feature
+    entity: passenger_id
+    value_type: string
+    description: "Embarked port feature"
+  - name: age_fare_feature
+    entity: passenger_id
+    value_type: float
+    description: "Interaction of age and fare"
